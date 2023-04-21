@@ -47,9 +47,8 @@ export default {
     };
   },
   methods: {
-    async addProduct() {
-      try {
-        ProductService.createProduct(this.product)
+    addProduct() {
+      ProductService.createProduct(this.product)
         .then(response => {
           console.log(response.data);
         })
