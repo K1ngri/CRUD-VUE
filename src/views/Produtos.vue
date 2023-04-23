@@ -26,8 +26,27 @@
         </tr>
       </tbody>
     </table>
+
+    <div class="modal" v-if="modalVisible">
+      <div class="modal-content">
+        <h2>Editar Produto</h2>
+        <form>
+          <label for="tipo">Tipo:</label>
+          <input type="text" id="tipo" v-model="produto.tipo">
+
+          <label for="modelo">Modelo:</label>
+          <input type="text" id="modelo" v-model="produto.modelo">
+
+          <label for="preco">Preço:</label>
+          <input type="number" id="preco" v-model="produto.preco">
+
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
+
 
 <script>
 import ProductService from "@/services.js";
@@ -37,6 +56,9 @@ export default {
   data() {
     return {
       produtos: [],
+      modalVisible: false, // adicionando a propriedade
+      produto: {} // adicionando a propriedade para armazenar o produto selecionado
+    
     };
   },
   mounted() {
@@ -45,33 +67,38 @@ export default {
     });
   },
   methods: {
-    async editProduto(id) {
+    async editProduto(produto) {
       // buscar o produto pelo ID
-      const response = await productService.getProduct(id)
+      const response = await ProductService.getProduct(produto.id)
       const product = response.data
 
-      // preencher o formulário com os dados do produto
-      this.tipo = product.tipo
-      this.modelo = product.modelo
-      this.preco = product.preco
+      // preencher o formulário com os dados do produto e mostrar o modal
+      this.produto = product
+      this.modalVisible = true
 
       // atualizar o produto após a edição
-      await productService.updateProduct(id, {
-        tipo: this.tipo,
-        modelo: this.modelo,
-        preco: this.preco
-      })
+      await ProductService.updateProduct(produto.id, produto)
 
       // resetar os campos do formulário e atualizar a lista de produtos
-      this.tipo = ''
-      this.modelo = ''
-      this.preco = ''
+      this.produto = {}
+      this.modalVisible = false
       await this.fetchProducts()
     },
-    async deleteProduto(id) {
-      await productService.deleteProduct(id)
-      // atualizar a lista de produtos após excluir um
-      await this.fetchProducts()
+    async updateProduto() {
+      await ProductService.updateProduct(this.produto.id, this.produto);
+
+      // resetar os campos do formulário e atualizar a lista de produtos
+      this.produto = {};
+      $("#edit-modal").modal("hide");
+      await this.fetchProducts();
+    },
+    async deleteProduto(produto) {
+      await ProductService.deleteProduct(produto.id);
+      await this.fetchProducts();
+    },
+    async fetchProducts() {
+      const response = await ProductService.getProducts();
+      this.produtos = response.data;
     },
   },
 };

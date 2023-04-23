@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import ProductService from "@/services.js";
 
 export default {
