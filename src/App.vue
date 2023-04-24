@@ -42,7 +42,7 @@ h1 {
 }
 
 .modal-content {
-  background-color: rgb(102, 101, 101);
+  background-color: #2a3747;
   color: #ffffff;
   border-radius: 15px;
   margin: 15% auto;

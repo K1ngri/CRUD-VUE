@@ -136,12 +136,12 @@ button:hover[id="excluir"]  {
 }
 
 button:hover[id="salvar"] {
-  background-color: rgb(38, 56, 71);;
+  background-color: #586e8b;
   color: rgb(252, 252, 252);
 }
 
 button:hover[id="cancelar"] {
-  background-color: rgb(38, 56, 71);;
+  background-color: #586e8b;
   color: rgb(252, 252, 252);
 }
 </style>

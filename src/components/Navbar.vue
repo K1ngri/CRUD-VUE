@@ -18,8 +18,8 @@ export default{
 
 <style scoped>
 #nav {
-    background-color: #161616;
-    border-bottom:  4px solid #111;
+    background-color: #2a3747;
+    border-bottom:  4px solid #2a3747;
     padding: 15px 50px;
     display: flex;
     justify-content: flex-end;
@@ -38,7 +38,7 @@ export default{
 }
 
 .label-nav{
-    background-color: #161616;
+    background-color: #2a3747;
     font-size: 19px;
 }
 
