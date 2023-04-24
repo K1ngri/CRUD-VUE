@@ -18,7 +18,8 @@
 }
 
 html {
-  background-color: #3a3a3a;
+  background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  height: 100% 
 }
 
 h1 {
