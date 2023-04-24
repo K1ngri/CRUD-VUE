@@ -29,21 +29,21 @@
 
     <div class="modal" v-if="modalVisible">
       <div class="modal-content">
-        <h2 class="title center">Editar Produto</h2>
+        <h2 id="title-center">Editar Produto</h2>
         <form>
-          <label for="tipo">Tipo:</label>
+          <label for="tipo">Tipo</label>
           <input type="text" id="tipo" v-model="produto.tipo">
 
-          <label for="modelo">Modelo:</label>
+          <label for="modelo">Modelo</label>
           <input type="text" id="modelo" v-model="produto.modelo">
 
-          <label for="preco">Preço:</label>
+          <label for="preco">Preço</label>
           <input type="number" id="preco" v-model="produto.preco">
 
-          <label for="quantidade">Quantidade:</label>
+          <label for="quantidade">Quantidade</label>
           <input type="number" id="quantidade" v-model="produto.quantidade">
 
-          <label for="imagem">Imagem:</label>
+          <label for="imagem">Imagem</label>
           <input type="text" id="imagem-modal" v-model="produto.imagem">
           <div class="button-container">
             <button id="salvar" type="button" @click="updateProduto">Salvar</button>
@@ -88,6 +88,12 @@ tr {
   border: 2px solid rgb(56, 55, 55);
 }
 
+h2[id="title-center"]{
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 button[id="editar"],
 [id="excluir"],
 [id="salvar"],
@@ -99,6 +105,7 @@ button[id="editar"],
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
+  font-size: 15px;
 }
 
 .button-container {

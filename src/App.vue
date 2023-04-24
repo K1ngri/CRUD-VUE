@@ -41,10 +41,12 @@ h1 {
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: rgb(102, 101, 101);
+  color: #ffffff;
+  border-radius: 15px;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #000000;
   width: 50%;
   max-width: 700px;
 }
@@ -60,12 +62,14 @@ form {
 
 label {
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 input {
-  padding: 5px;
+  padding: 10px;
+  border-radius: 10px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #8d8d8d;
 }
 </style>
 
