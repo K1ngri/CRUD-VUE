@@ -11,19 +11,25 @@
   box-sizing: border-box;
 }
 
+
 .main-container {
   margin: 50px;
   min-height: 250px;
 }
 
+html{
+  background-color: #3a3a3a;
+}
+
 h1{
-    color: #222;
+    color: #ffffff;
     text-align: center;
-    font-size: 42px;
-    margin-bottom: 30px;
+    font-size: 70px;
+    margin-bottom: 50px;
 }
 
 .modal {
+  background-color: #fff;
   display: block;
   position: fixed;
   z-index: 1;
@@ -60,50 +66,6 @@ input {
   padding: 5px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
-}
-
-button[type="submit"] {
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #0069d9;
-}
-
-button {
-  padding: 10px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-button:hover {
-  background-color: #c82333;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th,
-td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-}
-
-th {
-  background-color: #f2f2f2;
 }
 </style>
 

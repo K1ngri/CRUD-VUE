@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/produtos">Produtos</router-link>
+        <router-link class="label-nav" to="/">Home</router-link> |
+        <router-link class="label-nav" to="/produtos">Produtos</router-link>
     </div>
 </template>
 
@@ -15,7 +15,7 @@ export default{
 
 <style scoped>
 #nav {
-    background-color: #222;
+    background-color: #161616;
     border-bottom:  4px solid #111;
     padding: 15px 50px;
     display: flex;
@@ -32,5 +32,9 @@ export default{
 
 #nav a:hover{
     color: #696969
+}
+
+.label-nav{
+    background-color: #161616;
 }
 </style>

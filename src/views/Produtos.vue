@@ -18,10 +18,10 @@
           <td>{{ produto.modelo }}</td>
           <td>{{ produto.preco }}</td>
           <td>{{ produto.quantidade }}</td>
-          <td><img :src="produto.imagem" alt=""></td>
+          <td><img :src="produto.imagem" alt="" id="imagem"></td>
           <td>
-            <button @click="editProduto(produto)">Editar</button>
-            <button @click="deleteProduto(produto)">Excluir</button>
+            <button id="editar" @click="editProduto(produto)">Editar</button>
+            <button id="excluir" @click="deleteProduto(produto)">Excluir</button>
           </td>
         </tr>
       </tbody>
@@ -44,14 +44,62 @@
           <input type="number" id="quantidade" v-model="produto.quantidade">
 
           <label for="imagem">Imagem:</label>
-          <input type="text" id="imagem" v-model="produto.imagem">
+          <input type="text" id="imagem-modal" v-model="produto.imagem">
 
-          <button type="button" @click="updateProduto">Salvar</button>
+          <button id="salvar" type="button" @click="updateProduto">Salvar</button>
         </form>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+#imagem {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+table {
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border-collapse: collapse;
+	border: 2px solid rgb(56, 55, 55);
+}
+
+th {
+	padding: 20px;
+	background-color: rgb(102, 101, 101);
+	color: #ffffff;
+	border: 2px solid rgb(56, 55, 55);
+}
+
+td {
+	background-color: #bebebe;
+	padding: 15px;
+	border: 2px solid rgb(56, 55, 55);
+}
+
+tr {
+	padding: 15px;
+	border: 2px solid rgb(56, 55, 55);
+}
+
+button[id="editar"],[id="excluir"],[id="salvar"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #014996;
+}
+</style>
 
 
 <script>
@@ -101,7 +149,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>
