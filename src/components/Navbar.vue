@@ -1,7 +1,11 @@
 <template>
     <div id="nav">
-        <router-link class="label-nav" to="/">Home</router-link> |
-        <router-link class="label-nav" to="/produtos">Produtos</router-link>
+        <router-link  class="label-nav" to="/">
+            <font-awesome-icon class="label-nav-home" icon="fa-solid fa-home" /> Home
+        </router-link> |
+        <router-link class="label-nav" to="/produtos">
+            <font-awesome-icon class="label-nav-home" icon="fa-solid fa-bag-shopping" /> Produtos
+        </router-link>
     </div>
 </template>
 
@@ -35,6 +39,11 @@ export default{
 
 .label-nav{
     background-color: #161616;
-    font-size: 23px;
+    font-size: 19px;
+}
+
+.label-nav-home{
+    color:#7c99d0;
+    font-size: 30px;
 }
 </style>

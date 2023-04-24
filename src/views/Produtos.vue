@@ -20,8 +20,10 @@
           <td>{{ produto.quantidade }}</td>
           <td><img :src="produto.imagem" alt="" id="imagem"></td>
           <td>
-            <button id="editar" @click="editProduto(produto)">Editar</button>
-            <button id="excluir" @click="deleteProduto(produto)">Excluir</button>
+            <button id="editar" @click="editProduto(produto)">
+              <font-awesome-icon icon="fa-regular fa-pen-to-square" /></button>
+            <button id="excluir" @click="deleteProduto(produto)">
+              <font-awesome-icon icon="fa-regular fa-trash-can" /></button>
           </td>
         </tr>
       </tbody>
@@ -67,25 +69,24 @@ table {
   margin-top: 50px;
   margin-bottom: 50px;
   border-collapse: collapse;
-  border: 2px solid rgb(56, 55, 55);
 }
 
 th {
   padding: 20px;
-  background-color: rgb(102, 101, 101);
+  border-radius: 10px;
+  background-color: #2a3747;
   color: #ffffff;
-  border: 2px solid rgb(56, 55, 55);
 }
 
 td {
   background-color: #bebebe;
   padding: 15px;
-  border: 2px solid rgb(56, 55, 55);
+  border-radius: 10px;
+  border: 2px solid #2a3747;
 }
 
 tr {
   padding: 15px;
-  border: 2px solid rgb(56, 55, 55);
 }
 
 h2[id="title-center"]{
@@ -95,17 +96,27 @@ h2[id="title-center"]{
 }
 
 button[id="editar"],
-[id="excluir"],
-[id="salvar"],
-[id="cancelar"] {
+[id="excluir"] {
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: transparent;
+  color: #415875;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
-  font-size: 15px;
+  font-size: 24px;
+}
+
+button[id="salvar"],
+[id="cancelar"] {
+  padding: 10px;
+  background-color: #415875;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 24px;
 }
 
 .button-container {
@@ -114,8 +125,24 @@ button[id="editar"],
   margin-top: 20px;
 }
 
-button:hover {
-  background-color: #014996;
+button:hover[id="editar"]  {
+  background-color: transparent;
+  color: aliceblue;
+}
+
+button:hover[id="excluir"]  {
+  background-color: transparent;
+  color: aliceblue;
+}
+
+button:hover[id="salvar"] {
+  background-color: rgb(38, 56, 71);;
+  color: rgb(252, 252, 252);
+}
+
+button:hover[id="cancelar"] {
+  background-color: rgb(38, 56, 71);;
+  color: rgb(252, 252, 252);
 }
 </style>
 

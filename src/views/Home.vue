@@ -37,12 +37,12 @@ form {
   display: flex;
   flex-direction: column;
   margin: auto;
-  background-color: rgb(102, 101, 101);
+  background-color: #2a3747;
   color: #ffffff;
   width: 500px;
   border-radius: 10px;
   padding: 25px;
-  box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.479);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.479);
 }
 
 input {
@@ -59,7 +59,7 @@ input {
 
 
 label {
-  background-color: rgb(102, 101, 101);
+  background-color: #2a3747;
   font-size: 20px;
   margin-left: 30px;
   margin-bottom: 10px
@@ -73,7 +73,7 @@ label {
 
 button[type="submit"] {
   padding: 10px;
-  background-color: #007bff;
+  background-color: #415875;
   font-size: 20px;
   padding: auto;
   color: #fff;
@@ -84,7 +84,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0069d9;
+  background-color: #586e8b;
 }
 </style>
 
