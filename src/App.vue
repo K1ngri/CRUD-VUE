@@ -4,7 +4,7 @@
 </template>
 
 <style>
-*{
+* {
   font-family: Helvetica;
   padding: 0;
   margin: 0;
@@ -17,27 +17,27 @@
   min-height: 250px;
 }
 
-html{
+html {
   background-color: #3a3a3a;
 }
 
-h1{
-    color: #ffffff;
-    text-align: center;
-    font-size: 70px;
-    margin-bottom: 50px;
+h1 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 70px;
+  margin-bottom: 50px;
 }
 
 .modal {
-  background-color: #fff;
-  display: block;
   position: fixed;
-  z-index: 1;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {

@@ -45,8 +45,10 @@
 
           <label for="imagem">Imagem:</label>
           <input type="text" id="imagem-modal" v-model="produto.imagem">
-
-          <button id="salvar" type="button" @click="updateProduto">Salvar</button>
+          <div class="button-container">
+            <button id="salvar" type="button" @click="updateProduto">Salvar</button>
+            <button id="cancelar" type="button" @click="modalVisible = false">Cancelar</button>
+          </div>
         </form>
       </div>
     </div>
@@ -61,32 +63,35 @@
 }
 
 table {
-	margin: auto;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	border-collapse: collapse;
-	border: 2px solid rgb(56, 55, 55);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-collapse: collapse;
+  border: 2px solid rgb(56, 55, 55);
 }
 
 th {
-	padding: 20px;
-	background-color: rgb(102, 101, 101);
-	color: #ffffff;
-	border: 2px solid rgb(56, 55, 55);
+  padding: 20px;
+  background-color: rgb(102, 101, 101);
+  color: #ffffff;
+  border: 2px solid rgb(56, 55, 55);
 }
 
 td {
-	background-color: #bebebe;
-	padding: 15px;
-	border: 2px solid rgb(56, 55, 55);
+  background-color: #bebebe;
+  padding: 15px;
+  border: 2px solid rgb(56, 55, 55);
 }
 
 tr {
-	padding: 15px;
-	border: 2px solid rgb(56, 55, 55);
+  padding: 15px;
+  border: 2px solid rgb(56, 55, 55);
 }
 
-button[id="editar"],[id="excluir"],[id="salvar"] {
+button[id="editar"],
+[id="excluir"],
+[id="salvar"],
+[id="cancelar"] {
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -94,6 +99,12 @@ button[id="editar"],[id="excluir"],[id="salvar"] {
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 button:hover {
@@ -112,7 +123,7 @@ export default {
       produtos: [],
       modalVisible: false, // adicionando a propriedade
       produto: {} // adicionando a propriedade para armazenar o produto selecionado
-    
+
     };
   },
   mounted() {

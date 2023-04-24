@@ -36,5 +36,6 @@ export default{
 
 .label-nav{
     background-color: #161616;
+    font-size: 23px;
 }
 </style>
