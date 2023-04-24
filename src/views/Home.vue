@@ -50,12 +50,20 @@ export default {
       ProductService.createProduct(this.product)
         .then(response => {
           console.log(response.data);
+          this.resetForm();
         })
         .catch(e => {
           console.log(e);
         });
-    }
-  }
+    },
+    resetForm() {
+      this.product.tipo = '';
+      this.product.modelo = '';
+      this.product.preco = '';
+      this.product.quantidade = '';
+      this.product.imagem = '';
+    },
+  },
 };
 </script>
 
