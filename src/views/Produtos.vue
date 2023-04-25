@@ -1,14 +1,13 @@
 <template>
   <div class="main-container">
     <h1>STIMM</h1>
-    <div>
-      <label for="search">Buscar por modelo:</label>
-      <input type="text" id="search" v-model="filtroModelo" @input="filterProdutos">
+    <div class="pesquisar">
+      <input type="text" id="search" v-model="filtroModelo" @input="filterProdutos" placeholder="Buscar por modelo">
     </div>
     <table>
       <thead>
         <tr>
-          <th>Tipo</th>
+          <th>Tipo</th> 
           <th>Modelo</th>
           <th>Preço</th>
           <th>Quantidade</th>
@@ -99,6 +98,18 @@ h2[id="title-center"]{
   font-size: 35px;
   text-align: center;
   margin-bottom: 10px;
+}
+
+
+.pesquisar{
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+#search{
+  margin-left: 5px;
+  font-size: 18px;
 }
 
 button[id="editar"],
@@ -210,7 +221,6 @@ export default {
       ProductService.getProductsByModel(newValue).then((response) => {
         this.produtos = response.data;
       });
-      console.log(newValue);
     },
   },
   computed: {
