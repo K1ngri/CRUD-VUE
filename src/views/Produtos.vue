@@ -1,6 +1,10 @@
 <template>
   <div class="main-container">
     <h1>STIMM</h1>
+    <div>
+      <label for="search">Buscar por modelo:</label>
+      <input type="text" id="search" v-model="filtroModelo" @input="filterProdutos">
+    </div>
     <table>
       <thead>
         <tr>
@@ -13,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="produto in produtos" :key="produto.id">
+        <tr v-for="produto in filteredProdutos" :key="produto.id">
           <td>{{ produto.tipo }}</td>
           <td>{{ produto.modelo }}</td>
           <td>{{ produto.preco }}</td>
@@ -26,6 +30,7 @@
               <font-awesome-icon icon="fa-regular fa-trash-can" /></button>
           </td>
         </tr>
+        
       </tbody>
     </table>
 
@@ -48,6 +53,7 @@
           <label for="imagem">Imagem</label>
           <input type="text" id="imagem-modal" v-model="produto.imagem">
           <div class="button-container">
+            <i class="fa-solid fa-pen"></i>
             <button id="salvar" type="button" @click="updateProduto">Salvar</button>
             <button id="cancelar" type="button" @click="modalVisible = false">Cancelar</button>
           </div>
@@ -156,8 +162,8 @@ export default {
     return {
       produtos: [],
       modalVisible: false, // adicionando a propriedade
-      produto: {} // adicionando a propriedade para armazenar o produto selecionado
-
+      produto: {}, // adicionando a propriedade para armazenar o produto selecionado
+      filtroModelo: "",
     };
   },
   mounted() {
@@ -191,6 +197,28 @@ export default {
       const response = await ProductService.getProducts();
       this.produtos = response.data;
     },
+    filterProdutos() {
+      const filtro = this.filtroModelo.toLowerCase().trim();
+      this.produtos = this.produtos.filter(
+        (produto) => produto.modelo.toLowerCase().includes(filtro)
+      );
+    },
   },
+  watch: {
+    filtroModelo: function (newValue, oldValue) {
+      // atualizar a lista de produtos sempre que houver uma alteração no filtro de modelo
+      ProductService.getProductsByModel(newValue).then((response) => {
+        this.produtos = response.data;
+      });
+      console.log(newValue);
+    },
+  },
+  computed: {
+  filteredProdutos() {
+    return this.produtos.filter(produto => {
+      return produto.modelo.toLowerCase().includes(this.filtroModelo.toLowerCase());
+    });
+  }
+},
 };
 </script>
