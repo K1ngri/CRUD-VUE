@@ -208,17 +208,11 @@ export default {
       const response = await ProductService.getProducts();
       this.produtos = response.data;
     },
-    filterProdutos() {
-      const filtro = this.filtroModelo.toLowerCase().trim();
-      this.produtos = this.produtos.filter(
-        (produto) => produto.modelo.toLowerCase().includes(filtro)
-      );
-    },
   },
   watch: {
-    filtroModelo: function (newValue, oldValue) {
+    filtroModelo: function (input) {
       // atualizar a lista de produtos sempre que houver uma alteração no filtro de modelo
-      ProductService.getProductsByModel(newValue).then((response) => {
+      ProductService.getProductsByModel(input).then((response) => {
         this.produtos = response.data;
       });
     },
