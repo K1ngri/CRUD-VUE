@@ -1,6 +1,9 @@
 <template>
     <div id="nav">
-        <router-link class="label-nav" to="/">Home</router-link> |
+        <div>
+        <font-awesome-icon icon="fa-regular fa-home" />
+        <router-link class="label-nav" to="/">Home</router-link>
+        </div>
         <router-link class="label-nav" to="/produtos">Produtos</router-link>
     </div>
 </template>

@@ -78,6 +78,7 @@ input {
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
 
+
 export default {
   mounted() {
     document.title = 'STIMM';
