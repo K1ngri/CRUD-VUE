@@ -1,10 +1,6 @@
 <template>
   <div class="main-container">
     <h1>STIMM</h1>
-    <div>
-      <label for="search">Buscar por modelo:</label>
-      <input type="text" id="search" v-model="filtroModelo" @input="filterProdutos">
-    </div>
     <table>
       <thead>
         <tr>
@@ -17,22 +13,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="produto in filteredProdutos" :key="produto.id">
+        <tr v-for="produto in produtos" :key="produto.id">
           <td>{{ produto.tipo }}</td>
           <td>{{ produto.modelo }}</td>
           <td>{{ produto.preco }}</td>
           <td>{{ produto.quantidade }}</td>
           <td><img :src="produto.imagem" alt="" id="imagem"></td>
           <td>
-            <div>
-              <font-awesome-icon :icon="['fas', 'pen']" />
-              <button id="editar" @click="editProduto(produto)">Editar </button>
-            </div>
-            
-            <button id="excluir" @click="deleteProduto(produto)">Excluir</button>
+            <button id="editar" @click="editProduto(produto)">
+              <font-awesome-icon icon="fa-regular fa-pen-to-square" /></button>
+            <button id="excluir" @click="deleteProduto(produto)">
+              <font-awesome-icon icon="fa-regular fa-trash-can" /></button>
           </td>
         </tr>
-        
       </tbody>
     </table>
 
@@ -55,7 +48,6 @@
           <label for="imagem">Imagem</label>
           <input type="text" id="imagem-modal" v-model="produto.imagem">
           <div class="button-container">
-            <i class="fa-solid fa-pen"></i>
             <button id="salvar" type="button" @click="updateProduto">Salvar</button>
             <button id="cancelar" type="button" @click="modalVisible = false">Cancelar</button>
           </div>
@@ -77,25 +69,24 @@ table {
   margin-top: 50px;
   margin-bottom: 50px;
   border-collapse: collapse;
-  border: 2px solid rgb(56, 55, 55);
 }
 
 th {
   padding: 20px;
-  background-color: rgb(102, 101, 101);
+  border-radius: 10px;
+  background-color: #2a3747;
   color: #ffffff;
-  border: 2px solid rgb(56, 55, 55);
 }
 
 td {
   background-color: #bebebe;
   padding: 15px;
-  border: 2px solid rgb(56, 55, 55);
+  border-radius: 10px;
+  border: 2px solid #2a3747;
 }
 
 tr {
   padding: 15px;
-  border: 2px solid rgb(56, 55, 55);
 }
 
 h2[id="title-center"]{
@@ -105,17 +96,27 @@ h2[id="title-center"]{
 }
 
 button[id="editar"],
-[id="excluir"],
-[id="salvar"],
-[id="cancelar"] {
+[id="excluir"] {
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: transparent;
+  color: #415875;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
-  font-size: 15px;
+  font-size: 24px;
+}
+
+button[id="salvar"],
+[id="cancelar"] {
+  padding: 10px;
+  background-color: #415875;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 24px;
 }
 
 .button-container {
@@ -124,8 +125,24 @@ button[id="editar"],
   margin-top: 20px;
 }
 
-button:hover {
-  background-color: #014996;
+button:hover[id="editar"]  {
+  background-color: transparent;
+  color: aliceblue;
+}
+
+button:hover[id="excluir"]  {
+  background-color: transparent;
+  color: aliceblue;
+}
+
+button:hover[id="salvar"] {
+  background-color: #586e8b;
+  color: rgb(252, 252, 252);
+}
+
+button:hover[id="cancelar"] {
+  background-color: #586e8b;
+  color: rgb(252, 252, 252);
 }
 </style>
 
@@ -139,8 +156,8 @@ export default {
     return {
       produtos: [],
       modalVisible: false, // adicionando a propriedade
-      produto: {}, // adicionando a propriedade para armazenar o produto selecionado
-      filtroModelo: "",
+      produto: {} // adicionando a propriedade para armazenar o produto selecionado
+
     };
   },
   mounted() {
@@ -174,28 +191,6 @@ export default {
       const response = await ProductService.getProducts();
       this.produtos = response.data;
     },
-    filterProdutos() {
-      const filtro = this.filtroModelo.toLowerCase().trim();
-      this.produtos = this.produtos.filter(
-        (produto) => produto.modelo.toLowerCase().includes(filtro)
-      );
-    },
   },
-  watch: {
-    filtroModelo: function (newValue, oldValue) {
-      // atualizar a lista de produtos sempre que houver uma alteração no filtro de modelo
-      ProductService.getProductsByModel(newValue).then((response) => {
-        this.produtos = response.data;
-      });
-      console.log(newValue);
-    },
-  },
-  computed: {
-  filteredProdutos() {
-    return this.produtos.filter(produto => {
-      return produto.modelo.toLowerCase().includes(this.filtroModelo.toLowerCase());
-    });
-  }
-},
 };
 </script>

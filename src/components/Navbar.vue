@@ -1,10 +1,11 @@
 <template>
     <div id="nav">
-        <div>
-        <font-awesome-icon icon="fa-regular fa-home" />
-        <router-link class="label-nav" to="/">Home</router-link>
-        </div>
-        <router-link class="label-nav" to="/produtos">Produtos</router-link>
+        <router-link  class="label-nav" to="/">
+            <font-awesome-icon class="label-nav-home" icon="fa-solid fa-home" /> Home
+        </router-link> |
+        <router-link class="label-nav" to="/produtos">
+            <font-awesome-icon class="label-nav-home" icon="fa-solid fa-bag-shopping" /> Produtos
+        </router-link>
     </div>
 </template>
 
@@ -17,8 +18,8 @@ export default{
 
 <style scoped>
 #nav {
-    background-color: #161616;
-    border-bottom:  4px solid #111;
+    background-color: #2a3747;
+    border-bottom:  4px solid #2a3747;
     padding: 15px 50px;
     display: flex;
     justify-content: flex-end;
@@ -37,7 +38,12 @@ export default{
 }
 
 .label-nav{
-    background-color: #161616;
-    font-size: 23px;
+    background-color: #2a3747;
+    font-size: 19px;
+}
+
+.label-nav-home{
+    color:#7c99d0;
+    font-size: 30px;
 }
 </style>
